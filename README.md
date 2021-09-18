@@ -1,0 +1,2 @@
+# Route-Spotter
+• A web portal used for create a community of people who can plan and join events such as hiking, visiting football stadiums etc. • Designing a responsive website with easy user interface and will be constructing KAFKA messaging queues making the whole project more stable and scalable increasing scale to 83%. • Implementing large-scale mongo DB solutions for better performance and reliability with Node.js REST API’s.
