@@ -1,0 +1,33 @@
+
+<%- include('../partials/header.ejs')%>
+<div class="content">
+    <div class="center-container mb-100">
+        <div class="event-heading">
+            <h3 class="dis-in-bl"><%=user.firstName%>'s Connections</h3>
+        </div>
+        <% if(connections.length){ %>
+        <table border=1>
+            <tr>
+              <th>Connection</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+            <% connections.forEach(connection => { %>
+            <tr>
+                <td><%= connection.name %></td>
+                <td><%= connection.topic %></td>
+                <td>
+                    <form style="float: left;">
+                        <button class="button update-btn" type="submit" formmethod="GET" formaction="/connections/<%= connection._id %>/edit">Edit</button>
+                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>?_method=DELETE">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">There are no connections to display.</p>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs')%>

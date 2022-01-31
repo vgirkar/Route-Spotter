@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "619849c1ef556521d08b13d3"
+  },
+  "topic": "Hiking",
+  "name": "Rocky Mountains",
+  "details": "The Rocky Mountains, also known as the Rockies, are a major mountain range and the largest\r\n mountain system in North America. The Rocky Mountains stretch 3,000 mi (4,800 km)[1] in straight-line distance from the northernmost\r\n part of western Canada, to New Mexico in southwestern United States. Depending on differing definitions between Canada and the United States,\r\n its northern terminus is located either in northern British Columbias Terminal Range south of the Liard River and east of the Trench,\r\n or in the northeastern foothills of the Brooks Range/British Mountains that face the Beaufort Sea coasts between the Canning River and the \r\nFirth River across the Alaska-Yukon border.[2] Its southernmost point is near the Albuquerque area adjacent to the Rio Grande Basin and north\r\n of the Sandiaâ€“Manzano Mountain Range. Being the easternmost portion of the North American Cordillera, the Rockies are distinct from the \r\ntectonically younger Cascade Range and Sierra Nevada, which both lie farther to its west",
+  "location": "Charlotte International Airport",
+  "date": "2021-11-24",
+  "startTime": "14:30",
+  "endTime": "20:30",
+  "image": "https://thumbs.dreamstime.com/z/beautiful-lake-mountains-background-29145177.jpg",
+  "host": {
+    "$oid": "61984918ef556521d08b13d1"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:05:05.533Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:05:05.533Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61984a73d202222804aaf672"
+  },
+  "topic": "Hiking",
+  "name": "Yosemite National Park",
+  "details": "Yosemite Valley is a glacial valley in Yosemite National Park in the western Sierra N\r\nevada mountains of Central California. The valley is about 7.5 mi (12.1 km) long and 3,000â€“3,500 ft (910â€“1,070 m) deep, \r\nsurrounded by high granite summits such as Half Dome and El Capitan, and densely forested with pines. The valley is drained by the Merced River, \r\nand a multitude of streams and waterfalls flow into it, including Tenaya, Illilouette, Yosemite and Bridalveil Creeks. Yosemite Falls is \r\nthe highest waterfall in North America and is a big attraction especially in the spring, when the water flow is at its peak. The valley is\r\n renowned for its natural environment and is regarded as the centerpiece of Yosemite National Park.",
+  "location": "charlotte",
+  "date": "2021-11-20",
+  "startTime": "12:00",
+  "endTime": "17:30",
+  "image": "https://thumbs.dreamstime.com/z/yosimite-national-park-california-waterfall-61105809.jpg",
+  "host": {
+    "$oid": "61984918ef556521d08b13d1"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:08:03.417Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:08:03.417Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61984b3dd202222804aaf674"
+  },
+  "topic": "Hiking",
+  "name": "Zion National Park",
+  "details": "Zion National Park is a southwest Utah nature preserve distinguished by Zion Canyonâ€™s steep red cliffs. Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike.",
+  "location": "Charlotte International Airport",
+  "date": "2021-11-24",
+  "startTime": "10:00",
+  "endTime": "23:00",
+  "image": "https://thumbs.dreamstime.com/z/zion-national-park-sign-east-entrance-utah-32623148.jpg",
+  "host": {
+    "$oid": "61984940ef556521d08b13d2"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:11:25.090Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:11:25.090Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61984b84d202222804aaf675"
+  },
+  "topic": "Hiking",
+  "name": "Grand Canyon Nation Park",
+  "details": "\"Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history. Viewpoints include Mather Point, Yavapai Observation Station and architect Mary Colterâ€™s Lookout Studio and her Desert View Watchtower. Lipan Point, with wide views of the canyon and Colorado River, is a popular, especially at sunrise and sunset",
+  "location": "Charlotte International Airport",
+  "date": "2021-11-30",
+  "startTime": "08:00",
+  "endTime": "16:00",
+  "image": "https://thumbs.dreamstime.com/z/grand-canyon-national-park-entrance-sign-arizona-usa-monument-beautiful-sunny-day-blue-sky-summer-146343476.jpg",
+  "host": {
+    "$oid": "61984940ef556521d08b13d2"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:12:36.196Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:12:36.196Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61984bead202222804aaf676"
+  },
+  "topic": "Football Stadiums",
+  "name": "Stamford Bridge",
+  "details": "Ut mattis lacus in nulla elementum, non semper mauris bibendum. In hac habitasse platea dictumst. Quisque ornare justo eget rhoncus feugia},",
+  "location": "Charlotte International Airport",
+  "date": "2021-11-22",
+  "startTime": "09:00",
+  "endTime": "15:00",
+  "image": "https://thumbs.dreamstime.com/z/chelsea-fc-stamford-bridge-stadium-football-club-london-united-kingdom-capacity-making-eighth-largest-ground-56376614.jpg",
+  "host": {
+    "$oid": "61984940ef556521d08b13d2"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:14:18.111Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:14:18.111Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61984c51d202222804aaf677"
+  },
+  "topic": "Football Stadiums",
+  "name": "Old Trafford",
+  "details": "Old Trafford is a football stadium in Old Trafford, Greater Manchester, England, and the home of Manchester United. With a capacity of 74,140 seats, it is the largest club football stadium in the United Kingdom, and the eleventh-largest in Europe",
+  "location": "Charlotte International Airport",
+  "date": "2021-11-08",
+  "startTime": "14:02",
+  "endTime": "23:00",
+  "image": "https://thumbs.dreamstime.com/z/old-trafford-stadium-panorama-old-trafford-stadium-panorama-170121033.jpg",
+  "host": {
+    "$oid": "61984918ef556521d08b13d1"
+  },
+  "createdAt": {
+    "$date": "2021-11-20T01:16:01.301Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T01:16:01.301Z"
+  },
+  "__v": 0
+}]
