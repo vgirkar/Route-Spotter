@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+    <div class="content">
+        <div class="center-container mb-100">
+            <% if(categories.length){ %>
+                <% categories.forEach(category => { %>
+                <div class="listing">
+                    <h3><%= category %></h3>
+                    <ol>
+                        <% if(connections.length){ %>
+                            <% connections.forEach(connection => { 
+                                if (connection.topic === category) { %>
+                                    <li><a href="/connections/<%= connection.id %>"><%= connection.name %></a></li>
+                                <% } });
+                            } else { %>
+                                <p>There are no connections to display.</p>
+                        <% } %>
+                    </ol>
+                </div>
+                <% }); %>
+            <% } else { %>
+                <p>There are no categories to display.</p>
+            <% } %>
+        </div>
+    </div>
+<%- include('../partials/footer.ejs') %>
