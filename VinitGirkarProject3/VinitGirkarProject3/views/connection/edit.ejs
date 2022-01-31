@@ -1,0 +1,36 @@
+%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form action = '/connections/<%= connection.id%>?_method=PUT' method = 'POST' class="mt-20">
+            <label for="topic">Topic</label>
+            <input type="text" id="topic" name="topic" placeholder="Enter topic.." value="<%= connection.topic %>">
+
+            <label for="name">Title</label>
+            <input type="text" id="name" name="name" placeholder="Enter title.." value="<%= connection.name %>">
+
+            <label for="hostname">Host</label>
+            <input type="text" id="hostname" name="hostname" placeholder="Enter host.." value="<%= connection.hostname %>">
+
+            <label for="details">Detail</label>
+            <textarea id="details" name="details" placeholder="Enter detail.."><%= connection.details %></textarea>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter location.." value="<%= connection.location %>">
+        
+            <label for="date">Today's Date</label>
+            <input type="date" id="date" name="date" value="<%= connection.date %>">
+
+            <label for="startTime">Start Date</label>
+            <input type="date" id="startTime" name="startTime" value="<%= connection.startTime %>"> 
+
+            <label for="endTime">End Date</label>
+            <input type="date" id="endTime" name="endTime" value="<%= connection.endTime %>">
+
+            <label for="image">Image URL</label>
+            <input type="url" id="image" name="image" placeholder="Enter image url.." value="<%= connection.image %>">
+        
+            <button class="button submit-btn mb-100">Update Connection</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
