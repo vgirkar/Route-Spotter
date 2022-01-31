@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "61b3926311a9ee22348c7e11"
+  },
+  "topic": "Hiking",
+  "name": "Rocky Mountains",
+  "details": "The Rocky Mountains, also known as the Rockies, are a major mountain range and the largest mountain \r\nsystem in North America. The Rocky Mountains stretch 3,000 mi (4,800 km) in straight-line distance from the northernmost part of western Canada, to New Mexico in southwestern United States. Depending on differing definitions between Canada and the United States, its northern terminus is located either in northern British Columbias Terminal Range south of the Liard River and east of the Trench, or in the northeastern foothills of the Brooks Range&#x2F;British Mountains that face the Beaufort Sea coasts between the Canning River and the Firth River across the Alaska-Yukon border.[2] Its southernmost point is near the Albuquerque area adjacent to the Rio Grande Basin and north of the Sandiaâ€“Manzano Mountain Range. Being the easternmost portion of the North American Cordillera, the Rockies are distinct from the tectonically younger Cascade Range and Sierra Nevada, which both lie farther to its west",
+  "location": "Charlotte International Airport",
+  "date": "2021-12-17",
+  "startTime": "17:30",
+  "endTime": "20:30",
+  "image": "https://thumbs.dreamstime.com/z/beautiful-lake-mountains-background-29145177.jpg",
+  "host": {
+    "$oid": "61b391e811a9ee22348c7e10"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:46:11.808Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:46:11.808Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b392cb11a9ee22348c7e12"
+  },
+  "topic": "Hiking",
+  "name": "Yosemite National Park",
+  "details": "Yosemite Valley is a glacial valley in Yosemite National Park in the western Sierra Nevada \r\nmountains of Central California. The valley is about 7.5 mi (12.1 km) long and 3,000â€“3,500 ft (910â€“1,070 m) deep, \r\nsurrounded by high granite summits such as Half Dome and El Capitan, and densely forested with pines. \r\nThe valley is drained by the Merced River, and a multitude of streams and waterfalls flow into it, including Tenaya,\r\n Illilouette, Yosemite and Bridalveil Creeks. Yosemite Falls is the highest waterfall in North America and is a big attraction\r\n especially in the spring, when the water flow is at its peak. The valley is renowned for its natural environment and is regarded as\r\n the centerpiece of Yosemite National Park",
+  "location": "Denver International Airport",
+  "date": "2021-12-18",
+  "startTime": "08:30",
+  "endTime": "17:30",
+  "image": "https://thumbs.dreamstime.com/z/yosimite-national-park-california-waterfall-61105809.jpg",
+  "host": {
+    "$oid": "61b391e811a9ee22348c7e10"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:47:55.451Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:47:55.451Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b3930811a9ee22348c7e13"
+  },
+  "topic": "Football Stadiums",
+  "name": "Old Trafford",
+  "details": "Football Stadiums&quot;, details: &quot;Old Trafford is a football stadium in Old Trafford, Greater Manchester, England, and the home of Manchester United. With a capacity of 74,140 seats, it is the largest club football stadium in the United Kingdom, and the eleventh-largest in Europe",
+  "location": "Charlotte International Airport",
+  "date": "2021-12-22",
+  "startTime": "18:00",
+  "endTime": "20:00",
+  "image": "https://thumbs.dreamstime.com/z/old-trafford-stadium-panorama-old-trafford-stadium-panorama-170121033.jpg",
+  "host": {
+    "$oid": "61b391e811a9ee22348c7e10"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:48:56.260Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:48:56.260Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b393b911a9ee22348c7e15"
+  },
+  "topic": "Hiking",
+  "name": "Zion National Park",
+  "details": "Zion National Park is a southwest Utah nature preserve distinguished by Zion Canyonâ€™s steep red cliffs. Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike",
+  "location": "Charlotte International Airport",
+  "date": "2021-12-24",
+  "startTime": "14:30",
+  "endTime": "15:30",
+  "image": "https://thumbs.dreamstime.com/z/zion-national-park-sign-east-entrance-utah-32623148.jpg",
+  "host": {
+    "$oid": "61b3935111a9ee22348c7e14"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:51:53.789Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:51:53.789Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b393fa11a9ee22348c7e16"
+  },
+  "topic": "Hiking",
+  "name": "Grand Canyon Nation Park",
+  "details": "&quot;Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history. Viewpoints include Mather Point, Yavapai Observation Station and architect Mary Colterâ€™s Lookout Studio and her Desert View Watchtower. Lipan Point, with wide views of the canyon and Colorado River, is a popular, especially at sunrise and sunset",
+  "location": "Charlotte International Airport",
+  "date": "2021-12-21",
+  "startTime": "16:20",
+  "endTime": "18:20",
+  "image": "https://thumbs.dreamstime.com/z/grand-canyon-national-park-entrance-sign-arizona-usa-monument-beautiful-sunny-day-blue-sky-summer-146343476.jpg",
+  "host": {
+    "$oid": "61b3935111a9ee22348c7e14"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:52:58.406Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:52:58.406Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b3944211a9ee22348c7e17"
+  },
+  "topic": "Football Stadiums",
+  "name": "Stamford Bridge",
+  "details": "Ut mattis lacus in nulla elementum, non semper mauris bibendum. In hac habitasse platea dictumst. Quisque ornare justo eget rhoncus feugiat",
+  "location": "Charlotte International Airport",
+  "date": "2021-12-15",
+  "startTime": "16:00",
+  "endTime": "21:20",
+  "image": "https://thumbs.dreamstime.com/z/chelsea-fc-stamford-bridge-stadium-football-club-london-united-kingdom-capacity-making-eighth-largest-ground-56376614.jpg",
+  "host": {
+    "$oid": "61b3935111a9ee22348c7e14"
+  },
+  "createdAt": {
+    "$date": "2021-12-10T17:54:10.550Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-10T17:54:10.550Z"
+  },
+  "__v": 0
+}]
