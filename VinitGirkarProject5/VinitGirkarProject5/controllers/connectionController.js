@@ -3,12 +3,10 @@ const Rsvp = require('../models/Rsvp');
 const { DateTime } = require("luxon");
 
 exports.index = (req, res, next) => {
-    let categories = [];
-    Connection.distinct("topic", function(error, results){
-        categories = results;
-    });
-    Connection.find()
-    .then(connections => res.render('./connection/index', {connections, categories}))
+    Promise.all([Connection.distinct("topic"), Connection.find()])
+    .then(([categories, connections]) => {
+        res.render('./connection/index', {connections, categories});
+    })
     .catch(err=>next(err));
 };
 

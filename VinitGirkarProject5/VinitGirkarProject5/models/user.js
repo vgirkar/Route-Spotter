@@ -9,19 +9,18 @@ const userSchema = new Schema({
     password: { type: String, required: [true, 'Password is required'] },
 });
 
-userSchema.pre('save', function(next){
+userSchema.pre('save', async function(next){
     let user = this;
     if (!user.isModified('password'))
         return next();
         
-    bcrypt.genSalt(10, function(err, salt) {    
-        bcrypt.hash(user.password, salt)
-        .then(hash => {
-          user.password = hash;
-          next();
-        })
-        .catch(err => next(error));
-    });
+    try {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+        next();
+    } catch(err) {
+        next(err);
+    }
 });
 
 userSchema.methods.comparePassword = function(inputPassword) {

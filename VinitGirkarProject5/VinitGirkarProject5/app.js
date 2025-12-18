@@ -19,8 +19,7 @@ let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //connect to database
-mongoose.connect('mongodb://localhost:27017/Hiking', 
-                {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect('mongodb://localhost:27017/Hiking')
 .then(()=>{
     //start app
     app.listen(port, host, ()=>{

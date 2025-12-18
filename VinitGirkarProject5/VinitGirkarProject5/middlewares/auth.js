@@ -2,11 +2,11 @@ const Connection = require('../models/connection');
 
 //check if user is a guest
 exports.isGuest = (req, res, next)=>{
-    if(!req.session.user){
-        return next();
-    } else {
+    if(req.session.user){
         req.flash('error','You are logged in already');
         return res.redirect('/users/profile');
+    } else {
+        return next();
     }
 };
 
