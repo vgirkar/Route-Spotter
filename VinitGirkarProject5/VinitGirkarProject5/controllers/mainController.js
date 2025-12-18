@@ -9,3 +9,11 @@ exports.contact = (req, res) => {
 exports.about = (req, res) => {
     res.render('about');
 };
+
+exports.pricing = (req, res) => {
+    res.render('pricing');
+};
+
+exports.privacy = (req, res) => {
+    res.render('privacy');
+};

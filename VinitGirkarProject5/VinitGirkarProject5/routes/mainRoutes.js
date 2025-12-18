@@ -12,4 +12,10 @@ router.get('/contact', controller.contact);
 //POST /about: redirects to the about page
 router.get('/about', controller.about);
 
+//GET /privacy: redirects to the privacy policy page
+router.get('/privacy', controller.privacy);
+
+//GET /pricing: redirects to the pricing page
+router.get('/pricing', controller.pricing);
+
 module.exports=router;  

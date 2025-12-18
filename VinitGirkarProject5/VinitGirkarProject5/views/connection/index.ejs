@@ -1,24 +1,45 @@
 <%- include('../partials/header.ejs') %>
     <div class="content">
         <div class="center-container mb-100">
+            <h1 style="text-align: center; margin-bottom: 30px; color: #667eea;">📍 Available Connections</h1>
+            
             <% if(categories.length){ %>
                 <% categories.forEach(category => { %>
                 <div class="listing">
-                    <h3><%= category %></h3>
+                    <h3>
+                        <% if(category === 'Hiking') { %>
+                            🥾
+                        <% } else if(category === 'Football') { %>
+                            ⚽
+                        <% } else if(category === 'Sports') { %>
+                            🏃
+                        <% } else { %>
+                            🎯
+                        <% } %>
+                        <%= category %>
+                    </h3>
                     <ol>
                         <% if(connections.length){ %>
                             <% connections.forEach(connection => { 
                                 if (connection.topic === category) { %>
-                                    <li><a href="/connections/<%= connection._id %>"><%= connection.name %></a></li>
+                                    <li>
+                                        <strong><a href="/connections/<%= connection._id %>"><%= connection.name %></a></strong>
+                                        <div style="margin-top: 5px; font-size: 14px; color: #666;">
+                                            📍 <%= connection.city %>, <%= connection.state %>, <%= connection.country %> | 📅 <%= connection.date %>
+                                        </div>
+                                    </li>
                                 <% } });
                             } else { %>
-                                <p>There are no connections to display.</p>
+                                <p style="color: #999; font-style: italic;">No connections available in this category</p>
                         <% } %>
                     </ol>
                 </div>
                 <% }); %>
             <% } else { %>
-                <p>There are no connections to display.</p>
+                <div style="text-align: center; padding: 40px; color: #999;">
+                    <p style="font-size: 18px;">🎯 No connections yet</p>
+                    <p>Check back soon for new connections or <% if(user){ %><a href="/connections/new">create your own</a><% } else { %><a href="/users/new">sign up</a> to create one<% } %>!</p>
+                </div>
             <% } %>
         </div>
     </div>

@@ -9,17 +9,16 @@ const userSchema = new Schema({
     password: { type: String, required: [true, 'Password is required'] },
 });
 
-userSchema.pre('save', async function(next){
+userSchema.pre('save', async function(){
     let user = this;
     if (!user.isModified('password'))
-        return next();
+        return;
         
     try {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
-        next();
     } catch(err) {
-        next(err);
+        throw err;
     }
 });
 

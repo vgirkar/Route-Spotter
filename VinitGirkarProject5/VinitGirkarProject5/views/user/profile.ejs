@@ -2,60 +2,74 @@
 <%- include('../partials/header.ejs')%>
 <div class="content">
     <div class="center-container mb-100">
-        <div class="event-heading">
-            <h3 class="dis-in-bl"><%=user.firstName%>'s Connections</h3>
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 40px; text-align: center;">
+            <h1 style="margin: 0 0 10px 0; font-size: 32px;">👤 <%= user.firstName %>'s Profile</h1>
+            <p style="margin: 0; opacity: 0.9; font-size: 16px;"><%= user.firstName %> <%= user.lastName %></p>
         </div>
+
+        <!-- Hosted Connections Section -->
+        <h2 style="color: #667eea; margin-top: 0; padding-bottom: 15px; border-bottom: 3px solid #667eea; display: inline-block;">🎯 Connections You're Hosting</h2>
+        
         <% if(connections.length){ %>
-        <table border=1>
-            <tr>
-              <th>Connection</th>
-              <th>Category</th>
-              <th>Action</th>
-            </tr>
-            <% connections.forEach(connection => { %>
-            <tr>
-                <td><%= connection.name %></td>
-                <td><%= connection.topic %></td>
-                <td>
-                    <form style="float: left;">
-                        <button class="button update-btn" type="submit" formmethod="GET" formaction="/connections/<%= connection._id %>/edit">Edit</button>
-                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>?_method=DELETE">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <% }); %>
-        </table>
+            <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <% connections.forEach(connection => { %>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #667eea; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                        <div style="flex: 1;">
+                            <h4 style="margin: 0 0 8px 0; color: #333;"><%= connection.name %></h4>
+                            <p style="margin: 0; color: #666; font-size: 14px;">
+                                <strong>Category:</strong> <%= connection.topic %> | 
+                                <strong>Date:</strong> <%= connection.date %>
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="/connections/<%= connection._id %>/edit" class="button update-btn" style="margin: 0;">✏️ Edit</a>
+                            <form method="POST" action="/connections/<%= connection._id %>?_method=DELETE" style="display: inline;">
+                                <button class="button delete-btn" type="submit" onclick="return confirm('Delete this connection?')" style="margin: 0;">🗑️ Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
         <% } else { %>
-            <p style="margin: 20px auto;width: 95%;">There are no connections to display.</p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center; color: #999; margin: 20px 0;">
+                <p>📭 You haven't created any connections yet. <a href="/connections/new" style="color: #667eea; font-weight: 600;">Create one now</a>!</p>
+            </div>
         <% } %>
 
-        <div class="event-heading" style="margin-top: 50px;">
-            <h3 class="dis-in-bl"><%=user.firstName%>'s Rsvp</h3>
-        </div> 
+        <!-- RSVP Section -->
+        <h2 style="color: #764ba2; margin-top: 40px; padding-bottom: 15px; border-bottom: 3px solid #764ba2; display: inline-block;">📋 Events You're Attending</h2>
+        
         <% if(rsvps.length){ %>
-        <table border=1>
-            <tr>
-              <th>Connection</th>
-              <th>Category</th>
-              <th>Going?</th>
-              <th>Action</th>
-            </tr>
-            <% rsvps.forEach(rsvp => { %>
-            <tr>
-                <td><%= rsvp.connection.name %></td>
-                <td><%= rsvp.connection.topic %></td>
-                <td><%= rsvp.status %></td>
-                <td>
-                    <form style="float: left;">
-                        <button class="button update-btn" type="submit" formmethod="GET" formaction="/connections/<%= rsvp.connection._id %>">Edit</button>
-                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/connections/rsvp/<%= rsvp._id %>?_method=DELETE">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <% }); %>
-        </table>
+            <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <% rsvps.forEach(rsvp => { %>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #764ba2; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                        <div style="flex: 1;">
+                            <h4 style="margin: 0 0 8px 0; color: #333;"><%= rsvp.connection.name %></h4>
+                            <p style="margin: 0; color: #666; font-size: 14px;">
+                                <strong>Category:</strong> <%= rsvp.connection.topic %> | 
+                                <strong>Status:</strong> 
+                                <% if(rsvp.status === 'Yes') { %>
+                                    <span style="background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 4px; font-weight: 600;">✅ Going</span>
+                                <% } else if(rsvp.status === 'Maybe') { %>
+                                    <span style="background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 4px; font-weight: 600;">❓ Maybe</span>
+                                <% } else { %>
+                                    <span style="background: #f8d7da; color: #721c24; padding: 2px 8px; border-radius: 4px; font-weight: 600;">❌ Not Going</span>
+                                <% } %>
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="/connections/<%= rsvp.connection._id %>" class="button update-btn" style="margin: 0;">👁️ View</a>
+                            <form method="POST" action="/connections/rsvp/<%= rsvp._id %>?_method=DELETE" style="display: inline;">
+                                <button class="button delete-btn" type="submit" onclick="return confirm('Remove RSVP?')" style="margin: 0;">🗑️ Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
         <% } else { %>
-            <p style="margin: 20px auto;width: 95%;">There are no RSVP to display.</p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center; color: #999; margin: 20px 0;">
+                <p>📍 You haven't RSVP'd to any events yet. <a href="/connections" style="color: #667eea; font-weight: 600;">Explore connections</a>!</p>
+            </div>
         <% } %>
     </div>
 </div>

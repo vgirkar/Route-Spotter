@@ -1,33 +1,343 @@
 <%- include('../partials/header.ejs') %>
-<div class="content">
-    <div class="center-container">
-        <form action = '/connections/<%= connection.id%>?_method=PUT' method = 'POST' class="mt-20">
-            <label for="topic">Topic</label>
-            <input type="text" id="topic" name="topic" placeholder="Enter topic.." value="<%= connection.topic %>" required>
+<style>
+    .edit-connection-container {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-            <label for="name">Title</label>
-            <input type="text" id="name" name="name" placeholder="Enter title.." value="<%= connection.name %>" required>
+    .edit-connection-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
-            <label for="details">Detail</label>
-            <textarea id="details" name="details" placeholder="Enter detail.." required minlength="10"><%= connection.details %></textarea>
+    .edit-connection-header h1 {
+        font-size: 2.2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+    }
 
-            <label for="location">Location</label>
-            <input type="text" id="location" name="location" placeholder="Enter location.." value="<%= connection.location %>" required>
-        
-            <label for="date">Date</label>
-            <input type="date" id="date" name="date" value="<%= connection.date %>" required>
+    .edit-connection-header p {
+        color: #666;
+        font-size: 1rem;
+    }
 
-            <label for="startTime">Start Time</label>
-            <input type="time" id="startTime" name="startTime" value="<%= connection.startTime %>" required> 
+    .connection-form {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
 
-            <label for="endTime">End Time</label>
-            <input type="time" id="endTime" name="endTime" value="<%= connection.endTime %>" required>
+    .form-section {
+        margin-bottom: 30px;
+    }
 
-            <label for="image">Image URL</label>
-            <input type="url" id="image" name="image" placeholder="Enter image url.." value="<%= connection.image %>" required>
-        
-            <button class="button submit-btn mb-100">Update Connection</button>
-        </form>
+    .form-section-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-grid.full {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+
+    .form-group label::after {
+        content: " *";
+        color: #e74c3c;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .location-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .datetime-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-hint {
+        font-size: 0.85rem;
+        color: #999;
+        margin-top: 5px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 30px;
+        box-sizing: border-box;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .location-grid,
+        .datetime-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .edit-connection-container {
+            padding: 15px;
+        }
+
+        .connection-form {
+            padding: 25px;
+        }
+
+        .location-grid,
+        .datetime-grid,
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .edit-connection-header h1 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+<div class="edit-connection-container">
+    <div class="edit-connection-header">
+        <h1>✏️ Edit Connection</h1>
+        <p>Update your event details</p>
     </div>
+
+    <form action='/connections/<%= connection.id %>?_method=PUT' method='POST' class="connection-form">
+        <!-- Event Information Section -->
+        <div class="form-section">
+            <div class="form-section-title">📝 Event Information</div>
+            
+            <div class="form-grid full">
+                <div class="form-group">
+                    <label for="topic">Category/Topic</label>
+                    <select id="topic" name="topic" required>
+                        <option value="<%= connection.topic %>"><%= connection.topic %></option>
+                        <option value="Hiking">🥾 Hiking</option>
+                        <option value="Rock Climbing">🧗 Rock Climbing</option>
+                        <option value="Kayaking">🛶 Kayaking</option>
+                        <option value="Mountain Biking">🚴 Mountain Biking</option>
+                        <option value="Camping">⛺ Camping</option>
+                        <option value="Sport">⚽ Sport</option>
+                        <option value="Social Meetup">👥 Social Meetup</option>
+                        <option value="Fitness">💪 Fitness</option>
+                        <option value="Other">📌 Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-grid full">
+                <div class="form-group">
+                    <label for="name">Event Title</label>
+                    <input type="text" id="name" name="name" value="<%= connection.name %>" required>
+                    <div class="form-hint">Give your event a catchy title</div>
+                </div>
+            </div>
+
+            <div class="form-grid full">
+                <div class="form-group">
+                    <label for="details">Event Description</label>
+                    <textarea id="details" name="details" required minlength="10"><%= connection.details %></textarea>
+                    <div class="form-hint">Minimum 10 characters</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="form-section">
+            <div class="form-section-title">📍 Event Location</div>
+            
+            <div class="location-grid">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required onchange="updateStates()">
+                        <option value="<%= connection.country %>"><%= connection.country %></option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Australia">Australia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State/Province/Region</label>
+                    <select id="state" name="state" required>
+                        <option value="<%= connection.state %>"><%= connection.state %></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" value="<%= connection.city %>" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date & Time Section -->
+        <div class="form-section">
+            <div class="form-section-title">🕐 Date & Time</div>
+            
+            <div class="datetime-grid">
+                <div class="form-group">
+                    <label for="date">Event Date</label>
+                    <input type="date" id="date" name="date" value="<%= connection.date %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="startTime">Start Time</label>
+                    <input type="time" id="startTime" name="startTime" value="<%= connection.startTime %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="endTime">End Time</label>
+                    <input type="time" id="endTime" name="endTime" value="<%= connection.endTime %>" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="form-section">
+            <div class="form-section-title">🖼️ Event Image</div>
+            
+            <div class="form-grid full">
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="url" id="image" name="image" value="<%= connection.image %>" required>
+                    <div class="form-hint">Provide a URL to an attractive image for your event</div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">✅ Update Connection</button>
+    </form>
 </div>
+
+<script>
+    const statesData = {
+        'United States': ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'],
+        'Canada': ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia', 'Nunavut', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon'],
+        'Mexico': ['Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Chiapas', 'Chihuahua', 'Mexico City', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico State', 'Michoacán', 'Morelos', 'Nayarit', 'Oaxaca', 'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas'],
+        'United Kingdom': ['England', 'Scotland', 'Wales', 'Northern Ireland'],
+        'Australia': ['New South Wales', 'Queensland', 'South Australia', 'Tasmania', 'Victoria', 'Western Australia', 'Australian Capital Territory', 'Northern Territory'],
+        'New Zealand': ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Wanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wairarapa', 'Wellington', 'West Coast'],
+        'Switzerland': ['Aargau', 'Appenzell Ausserrhoden', 'Appenzell Innerrhoden', 'Basel-Landschaft', 'Basel-Stadt', 'Bern', 'Fribourg', 'Geneva', 'Glarus', 'Grisons', 'Jura', 'Lucerne', 'Neuchâtel', 'Nidwalden', 'Obwalden', 'Sankt Gallen', 'Schaffhausen', 'Schwyz', 'Solothurn', 'St. Gallen', 'Thurgau', 'Ticino', 'Uri', 'Valais', 'Vaud', 'Zug', 'Zurich'],
+        'France': ['Alsace', 'Aquitaine', 'Auvergne', 'Bourgogne', 'Brittany', 'Center', 'Champagne-Ardenne', 'Corsica', 'Franche-Comté', 'Île-de-France', 'Languedoc-Roussillon', 'Limousin', 'Lorraine', 'Midi-Pyrénées', 'Nord-Pas-de-Calais', 'Normandy', 'Pays de la Loire', 'Picardie', 'Poitou-Charentes', 'Provence-Alpes-Côte d\'Azur', 'Rhône-Alpes'],
+        'Germany': ['Baden-Württemberg', 'Bavaria', 'Berlin', 'Brandenburg', 'Bremen', 'Hamburg', 'Hesse', 'Lower Saxony', 'Mecklenburg-Vorpommern', 'North Rhine-Westphalia', 'Rhineland-Palatinate', 'Saarland', 'Saxony', 'Saxony-Anhalt', 'Schleswig-Holstein', 'Thuringia'],
+        'Japan': ['Aichi', 'Akita', 'Aomori', 'Chiba', 'Ehime', 'Fukui', 'Fukuoka', 'Fukushima', 'Gifu', 'Gunma', 'Hiroshima', 'Hokkaido', 'Hyogo', 'Ibaraki', 'Ishikawa', 'Iwate', 'Kagawa', 'Kagoshima', 'Kanagawa', 'Kochi', 'Kumamoto', 'Kyoto', 'Mie', 'Miyagi', 'Miyazaki', 'Nagano', 'Nagasaki', 'Nara', 'Niigata', 'Okinawa', 'Osaka', 'Saga', 'Saitama', 'Shiga', 'Shimane', 'Shizuoka', 'Tochigi', 'Tokushima', 'Tokyo', 'Toyama', 'Wakayama', 'Yamagata', 'Yamaguchi', 'Yamanashi'],
+        'Other': ['Other']
+    };
+
+    function updateStates() {
+        const countrySelect = document.getElementById('country');
+        const stateSelect = document.getElementById('state');
+        const selectedCountry = countrySelect.value;
+        
+        stateSelect.innerHTML = '<option value="">Select state...</option>';
+        
+        if (selectedCountry && statesData[selectedCountry]) {
+            statesData[selectedCountry].forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            });
+            
+            const currentState = '<%= connection.state %>';
+            if (currentState) {
+                stateSelect.value = currentState;
+            }
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', updateStates);
+</script>
+
 <%- include('../partials/footer.ejs') %>

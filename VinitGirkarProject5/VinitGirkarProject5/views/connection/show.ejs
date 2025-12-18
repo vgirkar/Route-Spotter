@@ -1,40 +1,53 @@
 <%- include('../partials/header.ejs') %>
 <div class="content">
-    <div class="center-container">
-        <form style="width: 100%;">
-            <div class="event-heading">
-                <h3 class="dis-in-bl"><%= connection.name %></h3>
-                <% if(user == connection.host._id) { %>
-                    <div class="float-right">
-                        <button class="button update-btn" type="submit" formmethod="GET" formaction="/connections/<%= connection._id %>/edit">Edit</button>
-                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>?_method=DELETE">Delete</button>
+    <div class="center-container mb-100">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h1 style="color: #667eea; margin: 0;"><%= connection.name %></h1>
+            <% if(user == connection.host._id) { %>
+                <div>
+                    <a href="/connections/<%= connection._id %>/edit" class="button update-btn">✏️ Edit</a>
+                    <form style="display: inline;" method="POST" action="/connections/<%= connection._id %>?_method=DELETE">
+                        <button class="button delete-btn" type="submit" onclick="return confirm('Are you sure you want to delete this connection?');">🗑️ Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+            <div>
+                <img class="event-image" src="<%= connection.image %>" alt="<%= connection.name %>" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+            <div>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="margin: 0 0 15px 0; font-size: 20px;">📊 Event Details</h3>
+                    <div style="line-height: 2;">
+                        <p style="margin: 0;"><strong>👤 Hosted by:</strong> <%= connection.host.firstName %> <%= connection.host.lastName %></p>
+                        <p style="margin: 0;"><strong>📅 Date:</strong> <%= connection.date %></p>
+                        <p style="margin: 0;"><strong>⏰ Time:</strong> <%= connection.startTime %> - <%= connection.endTime %></p>
+                        <p style=\"margin: 0;\"><strong>📍 Location:</strong> <%= connection.city %>, <%= connection.state %>, <%= connection.country %></p>
+                        <p style="margin: 0;"><strong>🏷️ Topic:</strong> <%= connection.topic %></p>
                     </div>
-                <% } %>
-            </div>
-        </form>
-        <div class="wrapper">
-            <div class="event-image-div"><img class="mlr-50 event-image" src="<%= connection.image %>" alt="Logo"></div>
-            <div class="detail">
-                <h4>Hosted by <%= connection.host.firstName +' '+ connection.host.lastName %></h4>
-                <p><%= connection.date %></p>
-                <p><%= connection.startTime %> - <%= connection.endTime %></p>
-                <p><%= connection.location %></p>
-            </div>
-            <div class="rsvp-wrapper">
-                <h4><%= rsvpCount %> people are going</h4>
-                <% if(user != connection.host._id) { %>
-                <p>RSVP to attend!</p>
-                <form style="width: 100%;">
-                    <button class="button submit-btn" name="status" type="submit" formmethod="POST" value="Yes" formaction="/connections/<%= connection._id %>/rsvp">Yes</button>
-                    <button class="button update-btn" name="status" type="submit" formmethod="POST" value="Maybe" formaction="/connections/<%= connection._id %>/rsvp">Maybe</button>
-                    <button class="button delete-btn" name="status" type="submit" formmethod="POST" value="No" formaction="/connections/<%= connection._id %>/rsvp">No</button>
-                </form>
-                <% } %>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #4facfe;">
+                    <h3 style="color: #00b4db; margin-top: 0; font-size: 18px;">👥 Attendees</h3>
+                    <p style="font-size: 24px; font-weight: bold; color: #667eea; margin: 10px 0;"><%= rsvpCount %> people are going</p>
+                    
+                    <% if(user != connection.host._id) { %>
+                        <p style="color: #666; margin: 15px 0 10px 0; font-weight: 600;">Will you attend?</p>
+                        <form style="display: flex; gap: 10px;">
+                            <button class="button submit-btn" name="status" type="submit" formmethod="POST" value="Yes" formaction="/connections/<%= connection._id %>/rsvp" style="flex: 1; padding: 12px;">✅ Yes</button>
+                            <button class="button update-btn" name="status" type="submit" formmethod="POST" value="Maybe" formaction="/connections/<%= connection._id %>/rsvp" style="flex: 1; padding: 12px;">❓ Maybe</button>
+                            <button class="button delete-btn" name="status" type="submit" formmethod="POST" value="No" formaction="/connections/<%= connection._id %>/rsvp" style="flex: 1; padding: 12px;">❌ No</button>
+                        </form>
+                    <% } %>
+                </div>
             </div>
         </div>
-        <div class="description">
-            <h3>Details</h3>
-            <p><%= connection.details %></p> 
+
+        <div style="background: #f8f9fa; padding: 30px; border-radius: 12px; border-left: 4px solid #667eea;">
+            <h2 style="color: #667eea; margin-top: 0;">📝 About This Connection</h2>
+            <p style="font-size: 16px; line-height: 1.8; color: #333;"><%= connection.details %></p>
         </div>
     </div>
 </div>

@@ -71,6 +71,7 @@ app.use((err, req, res, next) => {
         err.status = 500;
         err.message = ("Internal Server Error")
     }
+    console.error('Error:', err);
     res.status(err.status);
     res.render('error',{error:err});
 });

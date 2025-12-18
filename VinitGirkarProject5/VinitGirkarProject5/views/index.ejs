@@ -1,11 +1,31 @@
 <%- include('./partials/header.ejs') %>
     <div class="content">
+        <div class="hero">
+            <h1>🗺️ Welcome to Route Spotter</h1>
+            <p>Discover amazing connections, meet new people, and explore together</p>
+            <p>Whether you're into hiking, sports, or just making friends, Route Spotter connects you with people who share your passion</p>
+            <% if(!user){ %>
+                <a href="/users/new" class="cta-button">Get Started</a>
+            <% } else { %>
+                <a href="/connections" class="cta-button">Explore Connections</a>
+            <% } %>
+        </div>
+
         <div class="center-container">
-            <div class="m-80">
-                <p>Welcome to Route Spotter.</p>
-                <p>Route Spotter is a platform to organize, find, and attend group events. People use Route Spotter to meet new people, learn new things, find support, get out of their comfort zones, and pursue their passions, together. If you're down to meet awesome people, build a community, or find friends, then you belong here. We organise football stadium trips and hiking events.</p>
-                <p>You can go through the connections section to check the available connections.</p>
-            </div>
+            <h2>About Route Spotter</h2>
+            <p>Route Spotter is a vibrant platform designed to organize, find, and attend group events. Whether you're looking to meet awesome people, build a community, or make new friends, you belong here!</p>
+            
+            <h3 style="margin-top: 30px; color: #667eea;">What We Offer:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>🥾 Hiking Events:</strong> Join fellow hiking enthusiasts on scenic trails</li>
+                <li><strong>⚽ Sports Activities:</strong> Participate in organized football stadium trips and sports events</li>
+                <li><strong>👥 Community Building:</strong> Connect with like-minded individuals</li>
+                <li><strong>🎯 Pursue Your Passion:</strong> Find or create events centered around your interests</li>
+            </ul>
+
+            <h3 style="margin-top: 30px; color: #667eea;">Getting Started:</h3>
+            <p>You can browse all available connections in the <a href="/connections">Connections section</a>. Create an account to join events, host your own, and connect with the community!</p>
         </div>
     </div>
 <%- include('./partials/footer.ejs') %>
+
